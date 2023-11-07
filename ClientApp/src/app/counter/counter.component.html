@@ -1,0 +1,48 @@
+<h1>To Do List</h1>
+
+<div class="request-container">
+
+</div>
+<p>This is a simple example of an Angular component.</p>
+
+<button class="btn btn-primary" (click)="getAllTasks()">Get All</button>
+
+<p *ngIf="!TodoList?.length"><em>Click to Load</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="TodoList.length">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Complete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Todo of TodoList">
+      <td>{{ Todo.id }}</td>
+      <td>{{ Todo.name }}</td>
+      <td>{{ Todo.isComplete }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<input type="text" [(ngModel)]="ItemId" placeholder="Enter item ID" #inputValue>
+<br>
+<button class="btn btn-primary" (click)="getOneTask(inputValue.value)">Get Id Task</button>
+
+<p aria-live="polite">Current Item: <strong>{{ currentItem.id}} {{currentItem.name}} {{currentItem.isComplete }}</strong></p> 
+
+<textarea type="text" placeholder="Request in format:{Id:num, Name:string, IsComplete: bool}" #inputtext rows="4" cols="20"></textarea>
+<br>
+<input type="text" placeholder="Enter item ID" #inputUpdate>
+<br>
+<button class="btn btn-primary a" (click)="UpdateTodo(inputtext.value,inputUpdate.value)">Put Id Item</button>
+<br>
+<br>
+<input type="text"  placeholder="Enter item ID" #inputPostId>
+<br>
+<input type="text"  placeholder="Enter Name" #inputPostName>
+<br>
+<input type="text"  placeholder="Enter Bool" #inputPostBool>
+<br>
+<button class="btn btn-primary a" (click)="PostTest(inputPostId.value,inputPostName.value,inputPostBool.value)">PostItem</button>

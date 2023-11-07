@@ -1,0 +1,23 @@
+<h1 id="tableLabel">Form Test</h1>
+
+<form [formGroup]="personalInfoForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name" [class.border-invalid]="submitted && personalInfoForm.controls['name'].invalid">
+    <div *ngIf="submitted &&personalInfoForm.controls.name.touched && personalInfoForm.controls.name.invalid">
+      Name is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email" [class.border-invalid]="submitted && personalInfoForm.controls['email'].invalid">
+    <div *ngIf="submitted && personalInfoForm.controls.email.touched && personalInfoForm.controls.email.invalid">
+      A valid email is required.
+    </div>
+  </div>
+
+  <!-- other inputs... -->
+
+  <button type="submit">Submit</button>
+</form>
